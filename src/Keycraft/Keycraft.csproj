@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Keycraft</AssemblyName>
+    <Authors>pilyu9in</Authors>
+    <Company>pilyu9in</Company>
+    <Copyright>© 2026 pilyu9in</Copyright>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(KeycraftPrivateInputDirectory)' != ''">
+    <ApplicationManifest>$(KeycraftPrivateInputDirectory)/app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(KeycraftPrivateInputDirectory)' != ''">
+    <EmbeddedResource Include="../../docs/dotnet-notices.txt" LogicalName="ThirdPartyNotices.txt" />
+    <Compile Include="$(KeycraftPrivateInputDirectory)/AppleUsbReport.cs" />
+    <Compile Include="$(KeycraftPrivateInputDirectory)/UsbLockInput.cs" />
+    <Compile Include="$(KeycraftPrivateInputDirectory)/MainWindow.ExtendedInput.cs" />
+    <Compile Include="$(KeycraftPrivateInputDirectory)/Win.ExtendedInput.cs" />
+  </ItemGroup>
+</Project>
